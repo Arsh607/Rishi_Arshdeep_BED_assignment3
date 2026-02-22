@@ -18,16 +18,9 @@ export default [
       "@typescript-eslint": tsPlugin,
     },
     rules: {
-      // Allow console in backend
       "no-console": "off",
-
-      // Disable base rule (handled by TS)
       "no-unused-vars": "off",
-
-      // TS version of unused vars
       "@typescript-eslint/no-unused-vars": ["warn"],
-
-      // Warn on any (not error for now)
       "@typescript-eslint/no-explicit-any": "warn",
     },
   },
