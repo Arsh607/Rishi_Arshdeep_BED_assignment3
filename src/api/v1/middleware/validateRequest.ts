@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { HTTP_STATUS } from "../../../constants/httpsConstants";
+import { HTTP_STATUS } from "../../../constants/httpConstants";
 
 export const validateBody = (schema: any) => (req: Request, res: Response, next: NextFunction) => {
     const {value, error} = schema.validate(req.body, {

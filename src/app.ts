@@ -1,6 +1,6 @@
 import express, {Express, Request, Response} from 'express';
 import morgan from 'morgan';
-import { HTTP_STATUS } from './constants/httpsConstants';
+import { HTTP_STATUS } from './constants/httpConstants';
 import healthRouter from './api/v1/routes/healthRoute';
 
 const app: Express = express();

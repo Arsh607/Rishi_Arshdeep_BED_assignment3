@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from "../../../constants/httpsConstants";
+import { HTTP_STATUS } from "../../../constants/httpConstants";
 import * as healthService from "../services/healthServices";
 import { Request, Response } from "express";
 
