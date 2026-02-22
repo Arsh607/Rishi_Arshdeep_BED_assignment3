@@ -3,6 +3,6 @@ import express, { Router } from "express";
 
 const router: Router = express.Router();
 
-router.get("/api/v1/health", controller.healthCheck);
+router.get("/", controller.healthCheck);
 
 export default router;

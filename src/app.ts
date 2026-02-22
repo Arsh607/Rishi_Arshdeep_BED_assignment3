@@ -5,6 +5,6 @@ import healthRouter from './api/v1/routes/healthRoute';
 
 const app: Express = express();
 app.use(morgan('combined'));
-app.use('/', healthRouter);
+app.use('/api/v1/health', healthRouter);
 
 export default app;
