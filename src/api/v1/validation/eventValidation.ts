@@ -10,7 +10,7 @@ export const createEventSchema = Joi.object({
     .default("general")
 });
 
-export const eventIDParamSchema = Joi.object({
+export const eventIdParamSchema = Joi.object({
     id: Joi.string().required().pattern(/^evt_\d{6}$/)
 });
 
