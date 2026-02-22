@@ -6,6 +6,7 @@ import eventRouter from "./api/v1/routes/eventRoute";
 
 const app: Express = express();
 app.use(morgan('combined'));
+app.use(express.json());
 app.use('/api/v1/health', healthRouter);
 app.use('/api/v1/events', eventRouter);
 

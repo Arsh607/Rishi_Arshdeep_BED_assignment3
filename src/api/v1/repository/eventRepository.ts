@@ -9,11 +9,24 @@ function formatEventId(n: number) {
   return `evt_${String(n).padStart(6, "0")}`;
 }
 
+function toIsoString(value: any): string {
+  if (value && typeof value.toDate === "function") {
+    return value.toDate().toISOString();
+  }
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
+  if (typeof value === "string") {
+    return value;
+  }
+  return new Date(value).toISOString();
+}
+
 function docToEvent(id: string, data: FirebaseFirestore.DocumentData): Event {
   return {
     id,
     name: data.name,
-    date: data.date,
+    date: toIsoString(data.date),
     capacity: data.capacity,
     registrationCount: data.registrationCount,
     status: data.status,
