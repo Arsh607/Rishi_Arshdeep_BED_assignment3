@@ -15,7 +15,7 @@ export const getAllEvents = async (req: Request, res: Response, next: NextFuncti
     }
 };
 
-export const getByID = async (req: Request, res: Response, next: NextFunction) => {
+export const getByID = async (req: Request<{id: string}>, res: Response, next: NextFunction) => {
     try{
         const event = await eventService.getEventByID(req.params.id);
         return res.status(HTTP_STATUS.OK).json({
@@ -39,7 +39,7 @@ export const createEvent = async (req: Request, res: Response, next: NextFunctio
     }
 };
 
-export const updateEvent = async (req: Request, res: Response, next: NextFunction) => {
+export const updateEvent = async (req: Request<{id: string}>, res: Response, next: NextFunction) => {
     try{
         const event =  await eventService.updateEvent(req.params.id, req.body);
         return res.status(HTTP_STATUS.OK).json({
@@ -51,7 +51,7 @@ export const updateEvent = async (req: Request, res: Response, next: NextFunctio
     }
 };
 
-export const deleteEvent = async (req: Request, res: Response, next: NextFunction) => {
+export const deleteEvent = async (req: Request<{id: string}>, res: Response, next: NextFunction) => {
     try{
         await eventService.deleteEvent(req.params.id);
         return res.status(HTTP_STATUS.OK).json({message: "Event deleted"});
