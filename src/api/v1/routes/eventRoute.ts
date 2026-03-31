@@ -35,6 +35,50 @@ const router: Router = express.Router();
  *         description: Internal server error
  */
 router.get("/", eventController.getAllEvents);
+
+/**
+ * @openapi
+ * /events/{id}:
+ *   get:
+ *     tags:
+ *       - Events
+ *     summary: Get event by ID
+ *     description: Retrieves a single event by its unique ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Event ID
+ *         schema:
+ *           type: string
+ *           pattern: '^evt_\\d{6}$'
+ *           example: evt_000001
+ *     responses:
+ *       200:
+ *         description: Event retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Event retrieved
+ *                 data:
+ *                   $ref: '#/components/schemas/Event'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: Event not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.get("/:id", validateParams(eventIdParamSchema), eventController.getByID);
 router.post("/", validateBody(createEventSchema), eventController.createEvent);
 router.put("/:id", validateParams(eventIdParamSchema), 
