@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express, {Express, Request, Response} from 'express';
 import morgan from 'morgan';
 import { HTTP_STATUS } from './constants/httpConstants';
