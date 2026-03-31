@@ -10,7 +10,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "docs:generate": "ts-node scripts/generateDocs.ts"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,13 @@
   "homepage": "https://github.com/Arsh607/Rishi_Arshdeep_BED_assignment3#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/cors": "^2.8.19",
     "@types/jest": "^30.0.0",
     "@types/joi": "^17.2.2",
     "@types/node": "^25.3.0",
     "@types/supertest": "^6.0.3",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "@typescript-eslint/eslint-plugin": "^8.56.0",
     "@typescript-eslint/parser": "^8.56.0",
     "eslint": "^10.0.1",
@@ -44,7 +48,12 @@
   "dependencies": {
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
     "firebase-admin": "^13.6.1",
-    "morgan": "^1.10.1"
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
