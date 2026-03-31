@@ -118,6 +118,56 @@ router.get("/:id", validateParams(eventIdParamSchema), eventController.getByID);
  *         description: Internal server error
  */
 router.post("/", validateBody(createEventSchema), eventController.createEvent);
+
+/**
+ * @openapi
+ * /events/{id}:
+ *   put:
+ *     tags:
+ *       - Events
+ *     summary: Update an event
+ *     description: Updates an existing event using its ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Event ID
+ *         schema:
+ *           type: string
+ *           pattern: '^evt_\\d{6}$'
+ *           example: evt_000001
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateEventInput'
+ *     responses:
+ *       200:
+ *         description: Event updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Event updated
+ *                 data:
+ *                   $ref: '#/components/schemas/Event'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: Event not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.put("/:id", validateParams(eventIdParamSchema), 
         validateBody(updateEventSchema), eventController.updateEvent);
 router.delete("/:id", validateParams(eventIdParamSchema), eventController.deleteEvent);
