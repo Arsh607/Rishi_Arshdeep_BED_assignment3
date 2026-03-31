@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 export const createEventSchema = Joi.object({
-    name: Joi.string().min(3).required(),
+    name: Joi.string().min(5).required().messages({'string.min' : 'Name length should be 5.'}),
     date: Joi.date().iso().required().greater("now"),
     capacity: Joi.number().integer().required().min(5),
     registrationCount: Joi.number().integer().default(0).max(Joi.ref("capacity")).min(0),
