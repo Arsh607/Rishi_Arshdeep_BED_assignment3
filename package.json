@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Arsh607/Rishi_Arshdeep_BED_assignment3#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/cors": "^2.8.19",
     "@types/jest": "^30.0.0",
     "@types/joi": "^17.2.2",
     "@types/node": "^25.3.0",

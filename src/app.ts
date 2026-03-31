@@ -6,6 +6,7 @@ import { HTTP_STATUS } from './constants/httpConstants';
 import healthRouter from './api/v1/routes/healthRoute';
 import eventRouter from "./api/v1/routes/eventRoute";
 import helmet from 'helmet';
+import cors from "cors";
 
 const app: Express = express();
 app.use(morgan('combined'));
@@ -24,6 +25,15 @@ app.use(
             preload: true,
           }
         : false,
+  })
+);
+app.use(
+  cors({
+    origin: process.env.ALLOWED_ORIGIN || "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false,
+    optionsSuccessStatus: 204,
   })
 );
 app.use('/api/v1/health', healthRouter);
