@@ -7,6 +7,7 @@ import healthRouter from './api/v1/routes/healthRoute';
 import eventRouter from "./api/v1/routes/eventRoute";
 import helmet from 'helmet';
 import cors from "cors";
+import setupSwagger from "../config/swagger";
 
 const app: Express = express();
 app.use(morgan('combined'));
@@ -38,5 +39,5 @@ app.use(
 );
 app.use('/api/v1/health', healthRouter);
 app.use('/api/v1/events', eventRouter);
-
+setupSwagger(app);
 export default app;
