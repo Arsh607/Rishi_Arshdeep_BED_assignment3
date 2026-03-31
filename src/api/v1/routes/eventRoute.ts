@@ -170,6 +170,48 @@ router.post("/", validateBody(createEventSchema), eventController.createEvent);
  */
 router.put("/:id", validateParams(eventIdParamSchema), 
         validateBody(updateEventSchema), eventController.updateEvent);
+
+/**
+ * @openapi
+ * /events/{id}:
+ *   delete:
+ *     tags:
+ *       - Events
+ *     summary: Delete an event
+ *     description: Deletes an event by its ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Event ID
+ *         schema:
+ *           type: string
+ *           pattern: '^evt_\\d{6}$'
+ *           example: evt_000001
+ *     responses:
+ *       200:
+ *         description: Event deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Event deleted
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: Event not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.delete("/:id", validateParams(eventIdParamSchema), eventController.deleteEvent);
 
 export default router;
