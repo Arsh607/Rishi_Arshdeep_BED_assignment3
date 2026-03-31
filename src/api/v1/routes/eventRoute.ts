@@ -80,6 +80,43 @@ router.get("/", eventController.getAllEvents);
  *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.get("/:id", validateParams(eventIdParamSchema), eventController.getByID);
+
+/**
+ * @openapi
+ * /events:
+ *   post:
+ *     tags:
+ *       - Events
+ *     summary: Create a new event
+ *     description: Creates a new event with the provided data.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateEventInput'
+ *     responses:
+ *       201:
+ *         description: Event created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Event created
+ *                 data:
+ *                   $ref: '#/components/schemas/Event'
+ *       400:
+ *         description: Validation error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ */
 router.post("/", validateBody(createEventSchema), eventController.createEvent);
 router.put("/:id", validateParams(eventIdParamSchema), 
         validateBody(updateEventSchema), eventController.updateEvent);
